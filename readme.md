@@ -8,7 +8,7 @@ To run on your own machine, please do the following:
 2. Clone this repository onto your local machine and cd into the directory.
 
 3. Activate your virtual environment:
-	$ source venn/bin/activate
+	$ source venv/bin/activate
 
 4. Install the selenium and mechanize gems (if not already installed) and any other gems that your system
 requires you to install when you run the script (you can check the requirements.txt file for more details). 
