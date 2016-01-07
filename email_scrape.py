@@ -1,4 +1,5 @@
 def crawl_website():
+
 	# spoof our browser so it looks like we're not a robot connecting to the website
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
@@ -13,15 +14,16 @@ def crawl_website():
 	email_list = []
 	new_url_list.append(start_url)
 
-
 	while len(new_url_list) > 0:
 		for item in new_url_list:
 			browser.get(item) 
-
+			
 			emails = browser.find_elements_by_partial_link_text('@') 
-			if (len(emails)) > 0: # this line fixes the bug 
-				for x in range(0,len(emails)):
-					email_list.append(emails[x].text)
+			for email in emails:
+			#if (len(emails)) > 0: # this line fixes the bug 
+				#for x in range(0,len(emails)):
+				#email_list.append(emails[x].text)
+				email_list.append(email.text)
 
 			new_url_list.pop(0)
 			visited_url_list.append(item)
@@ -45,8 +47,8 @@ def crawl_website():
 					new_url_list.append(link)	
 
 	email_list = set(email_list) #gets unique email addresses
-	for email in email_list:
-		print email
+	for unique_email in email_list:
+		print unique_email
 
 	browser.close()
 
@@ -58,6 +60,7 @@ if __name__ == '__main__':
 	import re
 	import sys
 	import pdb
+	import argparse
 
 crawl_website()
 
