@@ -1,11 +1,3 @@
-import mechanize
-import urllib2
-from selenium import webdriver
-import os
-import re
-import sys
-import pdb
-
 def crawl_website():
 	# spoof our browser so it looks like we're not a robot connecting to the website
 	br = mechanize.Browser()
@@ -57,6 +49,15 @@ def crawl_website():
 		print y
 
 	browser.close()
+
+if __name__ == '__main__':
+	import mechanize
+	import urllib2
+	from selenium import webdriver
+	import os
+	import re
+	import sys
+	import pdb
 
 crawl_website()
 
