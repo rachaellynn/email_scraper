@@ -6,12 +6,12 @@ def crawl_website():
 	br.addheaders = [('User-agent','Firefox')]
 	browser = webdriver.Firefox()
 
-	url = sys.argv[1] 
+	start_url = sys.argv[1] 
 	new_url_list = []
 	visited_url_list = []
 	button_urls = []
 	email_list = []
-	new_url_list.append(url)
+	new_url_list.append(start_url)
 
 
 	while len(new_url_list) > 0:
@@ -30,18 +30,18 @@ def crawl_website():
 			other_urls = browser.find_elements_by_class_name('btn')
 			urls = urls + other_urls
 			
-			for x in range(0,len(urls)):
-				link = urls[x].get_attribute('href')
+			for url in urls:
+				link = url.get_attribute('href')
 				
 				#clean up the link
 				if(str(link).startswith("/")): #makes incomplete links complete
-					link = url + link
+					link = start_url + link
 				link = str(link).split('#', 1)[0] #pulls out any anchor tags
 				if(str(link).endswith('/')): #pulls out any end dashes
 					link = link[:-1]	
 
 				# adds link to the new list if appropriate
-				if str(url) in str(link) and link not in visited_url_list and link not in new_url_list: 
+				if str(start_url) in str(link) and link not in visited_url_list and link not in new_url_list: 
 					new_url_list.append(link)	
 
 	email_list = set(email_list) #gets unique email addresses
