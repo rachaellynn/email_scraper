@@ -45,8 +45,8 @@ def crawl_website():
 					new_url_list.append(link)	
 
 	email_list = set(email_list) #gets unique email addresses
-	for y in email_list:
-		print y
+	for email in email_list:
+		print email
 
 	browser.close()
 
