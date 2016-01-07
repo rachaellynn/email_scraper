@@ -20,9 +20,6 @@ def crawl_website():
 			
 			emails = browser.find_elements_by_partial_link_text('@') 
 			for email in emails:
-			#if (len(emails)) > 0: # this line fixes the bug 
-				#for x in range(0,len(emails)):
-				#email_list.append(emails[x].text)
 				email_list.append(email.text)
 
 			new_url_list.pop(0)
@@ -63,7 +60,6 @@ if __name__ == '__main__':
 	import argparse
 
 crawl_website()
-print "test change"
 
 
 
