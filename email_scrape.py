@@ -18,7 +18,8 @@ def crawl_website():
 		for item in new_url_list:
 			browser.get(item) 
 			
-			emails = browser.find_elements_by_partial_link_text('@') 
+			emails = browser.find_elements_by_xpath('//*[contains(text(), "@")]')
+			#emails = browser.find_elements_by_partial_link_text('@') 
 			for email in emails:
 				email_list.append(email.text)
 
